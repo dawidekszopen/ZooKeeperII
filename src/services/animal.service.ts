@@ -29,7 +29,6 @@ class AnimalService{
 
         for(let i: number = 0; i < this.animals.length; i++){
             if(this.animals[i]["isEndangered"]){
-                console.log(this.animals[i])
                 EndageredAnimals.push(this.animals[i])
             }
         }
@@ -42,7 +41,6 @@ class AnimalService{
 
         for(let i = 0; i < this.animals.length; i++){
             if(this.animals[i]["habitat"] === habitat){
-                console.log(this.animals[i])
                 HabitatAnimals.push(this.animals[i])
             }
         }
@@ -53,6 +51,7 @@ class AnimalService{
     GetAllAnimalsSpecies(species: string): Array<Animal>{
         let SpeciesAnimals: Array<Animal> = [];
 
+        console.log(species)
 
         for(let i = 0; i < this.animals.length; i++){
             if(this.animals[i]["species"] === species){
@@ -61,6 +60,11 @@ class AnimalService{
             }
         }
 
+        console.log(SpeciesAnimals)
+
         return SpeciesAnimals
     }
 }
+
+
+export const animalService = new AnimalService()

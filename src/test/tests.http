@@ -1,4 +1,58 @@
-###
+### Start
 GET http://localhost:3000/
+
+###
+
+### Get all animals
+GET http://localhost:3000/api/animals
+
+###
+
+### Get all animals isEndangered
+GET http://localhost:3000/api/animals/endangered
+
+###
+
+### Get all animals isEndangered
+GET http://localhost:3000/api/animals/habitat/Savanna
+
+###
+
+### Get all animals within species
+GET http://localhost:3000/api/animals/species?species=Lion
+
+###
+
+### Post new animal
+
+POST http://localhost:3000/api/animals
+Content-Type: application/json; charset=utf-8
+
+{
+  "id": 7,
+  "name": "Mruczek",
+  "species": "Cat",
+  "age": 2,
+  "isEndangered": false,
+  "habitat": "Poland"
+}
+###
+
+### Update animal
+PUT http://localhost:3000/api/animals/7
+Content-Type: application/json
+
+{
+  "id": 7,
+  "name": "Kai",
+  "species": "Python",
+  "age": 12,
+  "isEndangered": false,
+  "habitat": "Jungle"
+}
+###
+
+### Delete animal
+DELETE http://localhost:3000/api/animals/7
 
 ###
