@@ -29,7 +29,6 @@ POST http://localhost:3000/api/animals
 Content-Type: application/json; charset=utf-8
 
 {
-  "id": 7,
   "name": "Mruczek",
   "species": "Cat",
   "age": 2,
@@ -39,11 +38,10 @@ Content-Type: application/json; charset=utf-8
 ###
 
 ### Update animal
-PUT http://localhost:3000/api/animals/7
+PUT http://localhost:3000/api/animals/3
 Content-Type: application/json
 
 {
-  "id": 7,
   "name": "Kai",
   "species": "Python",
   "age": 12,
@@ -53,6 +51,6 @@ Content-Type: application/json
 ###
 
 ### Delete animal
-DELETE http://localhost:3000/api/animals/7
+DELETE http://localhost:3000/api/animals/3
 
 ###

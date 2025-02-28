@@ -1,4 +1,5 @@
 import {Animal} from "../models/animal";
+import AnimalController from "../controllers/animal.controller";
 
 class AnimalService{
     private animals: Array<Animal> = [
@@ -64,6 +65,51 @@ class AnimalService{
 
         return SpeciesAnimals
     }
+
+    PostNewAnimal(AnimalNew: Animal): Animal{
+        const newAnimal: Animal ={
+            id: this.animals.length+1,
+            name: AnimalNew.name,
+            species: AnimalNew.species,
+            age: AnimalNew.age,
+            isEndangered: AnimalNew.isEndangered,
+            habitat: AnimalNew.habitat
+        }
+        this.animals.push(newAnimal)
+        return newAnimal
+    }
+
+    UpdateAnimal(id:number, animal: Animal): Animal | null{
+        const animalIndex: number = this.animals.findIndex(animal => animal.id === id)
+        if(animalIndex === -1){
+            return null
+        }
+
+        const UpdatedAnimal: Animal ={
+            id,
+            name: animal.name,
+            species: animal.species,
+            age: animal.age,
+            isEndangered: animal.isEndangered,
+            habitat: animal.habitat
+        }
+
+        this.animals[animalIndex] = {...this.animals[animalIndex], ...UpdatedAnimal}
+
+        return UpdatedAnimal
+    }
+
+    DeleteAnimal(id:number): Boolean{
+        const animalIndex: number = this.animals.findIndex(animal => animal.id === id)
+        if(animalIndex === -1){
+            return false
+        }
+
+        this.animals.splice(animalIndex, 1)
+
+        return true
+    }
+
 }
 
 

@@ -1,5 +1,7 @@
 import {Response, Request} from "express";
 import {animalService} from "../services/animal.service";
+import {Animal} from "../models/animal";
+
 class AnimalController{
     static GetAllAnimals(req: Request, res: Response): void{
         const animals = animalService.GetAllAnimals()
@@ -36,6 +38,41 @@ class AnimalController{
             res.json({message: "all animals in habitat", animalsSpecies})
         }
         else {
+            res.status(400).json({message: "There is an error in your request. Check and try again"})
+        }
+    }
+
+    static PostNewAnimal(req: Request, res: Response): void{
+        const newAnimal: Animal = req.body
+
+        const PostAnimal = animalService.PostNewAnimal(newAnimal)
+
+        res.json({message: "We added your animal", PostAnimal})
+    }
+
+    static UpdateAnimal(req: Request, res: Response): void{
+        const id: number = parseInt(req.params.id)
+        const UpdatedAnimal: Animal = req.body
+
+        const result = animalService.UpdateAnimal(id, UpdatedAnimal)
+
+        if(result != null){
+            res.json({message: "We updated animal", result})
+        }
+        else{
+            res.status(400).json({message: "There is an error in your request. Check and try again"})
+        }
+    }
+
+    static DeleteAnimal(req: Request, res: Response): void{
+        const id: number = parseInt(req.params.id)
+
+        const result = animalService.DeleteAnimal(id)
+
+        if(result){
+            res.json({message: `We deleted animal with id numer: ${id} :c \uf5b4`})
+        }
+        else{
             res.status(400).json({message: "There is an error in your request. Check and try again"})
         }
     }

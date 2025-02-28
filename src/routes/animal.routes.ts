@@ -9,5 +9,11 @@ animalRouter.get("/endangered", AnimalController.GetAllAnimalsEndagered)
 animalRouter.get("/habitat/:habitat", AnimalController.GetAllAnimalsInHabitat)
 animalRouter.get("/species", AnimalController.GetAllAnimalsSpecies)
 
+animalRouter.post('/', AnimalController.PostNewAnimal)
+
+animalRouter.put('/:id', AnimalController.UpdateAnimal)
+
+animalRouter.delete('/:id', AnimalController.DeleteAnimal)
+
 
 export default animalRouter
